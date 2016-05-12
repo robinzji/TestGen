@@ -31,7 +31,22 @@ public class Test {
 		
 	}
 	
-	public ArrayList<Question> generateQuestions(){
-		return null;
+	public ArrayList<Question> generateQuestions()throws Exception{
+        	BufferedReader fin;
+        	fin = new BufferedReader(new FileReader ("README.txt"));//filename text file
+        	String line="";
+        
+        	int count=0;
+		int questionNum=2;
+		while(fin.hasNextLine()){
+        		String questionNumStr=Integer.toString(questionNum)+". ";
+            		line = fin.readLine();
+           		String[] q = line.split(questionNumStr);
+            		String questionContent=q[count];
+            		questions.add(Question(questionContent));
+            		count++;
+            		questionNum++;
+        	}
+        	return questions;
 	}
 }
